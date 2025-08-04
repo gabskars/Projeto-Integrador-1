@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elite Motos - Bem Vindo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /*
+        **************************************
+        * CSS GLOBAL E RESETS BÁSICOS        *
+        **************************************
+        */
+
+        /* Reseta margens e paddings padrão de todos os elementos e define box-sizing para facilitar o layout. */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Estilos aplicados ao corpo da página para centralizar o conteúdo principal e definir a fonte e cor de fundo. */
+        body {
+            font-family: 'Arial', sans-serif; /* Define a fonte padrão. */
+            display: flex; /* Usa flexbox para centralizar o container principal. */
+            justify-content: center; /* Centraliza horizontalmente. */
+            align-items: center; /* Centraliza verticalmente. */
+            min-height: 100vh; /* Garante que o body ocupe a altura total da viewport. */
+            background-color: #f0f0f0; /* Fundo cinza claro para a área externa do container. */
+            color: #fff; /* Cor do texto padrão para elementos dentro do container vermelho. */
+        }
+
+        /* Definição de variáveis CSS para cores, facilitando a manutenção e consistência. */
+        :root {
+            --red-dark: #850000; /* Vermelho escuro principal, usado para o fundo do container. */
+            --red-medium: #CC0000; /* Vermelho um pouco mais claro (não usado diretamente nesta tela, mas útil para o projeto). */
+            --orange-accent: #FF7F50; /* Laranja coral, usado para o botão "Estoque" e a caixa da seta. */
+            --yellow-accent: #FFD700; /* Amarelo, usado para o ícone de perfil. */
+            --white: #FFFFFF; /* Branco, para a maioria dos textos. */
+            --light-grey: #f0f0f0; /* Cinza claro. */
+            --dark-grey: #333; /* Cinza escuro. */
+            --medium-grey: #757575; /* Cinza médio. */
+        }
+
+        /* Estilos genéricos para botões e links que se parecem com botões, garantindo uma aparência consistente. */
+        .btn-primary {
+            /* Removendo padding horizontal daqui para controlar apenas na classe específica do botão Estoque */
+            padding: 10px 25px; /* Manter um padding padrão para outros botões, se existirem */
+            border: none; /* Remove a borda padrão do botão. */
+            font-weight: bold; /* Texto em negrito. */
+            cursor: pointer; /* Muda o cursor para indicar que é clicável. */
+            transition: background-color 0.3s ease; /* Transição suave na cor de fundo ao passar o mouse. */
+            text-decoration: none; /* Remove o sublinhado de links. */
+            display: inline-flex; /* Permite centralizar o texto vertical e horizontalmente dentro do botão. */
+            align-items: center; /* Alinha o conteúdo verticalmente. */
+            justify-content: center; /* Alinha o conteúdo horizontalmente. */
+            background-color: var(--orange-accent); /* Cor de fundo laranja do botão. */
+            color: var(--white); /* Cor do texto do botão. */
+        }
+
+        .btn-primary:hover {
+            background-color: #ff6347; /* Cor de fundo mais escura ao passar o mouse. */
+        }
+
+        /*
+        **************************************
+        * TELA HOME - ESTILOS ESPECÍFICOS    *
+        **************************************
+        */
+
+        /* Container principal da tela Home. */
+        .home-container {
+            width: 80%; /* Largura do container. */
+            max-width: 1000px; /* Largura máxima para telas maiores. */
+            height: 600px; /* Altura fixa do container. */
+            background-color: var(--red-dark); /* Fundo vermelho escuro. */
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); /* Sombra sutil. */
+            border-radius: 0px; /* Sem bordas arredondadas no container principal (conforme imagem). */
+            overflow: hidden; /* Garante que o conteúdo não vaze. */
+            display: flex; /* Usa flexbox para organizar o cabeçalho, conteúdo principal e rodapé. */
+            flex-direction: column; /* Organiza os itens em coluna. */
+            justify-content: space-between; /* Espaça o cabeçalho, o conteúdo principal e o rodapé igualmente. */
+            padding: 20px 50px; /* Padding interno para o container (top/bottom, left/right). */
+        }
+
+        /* Cabeçalho da tela Home. */
+        .home-header {
+            display: flex; /* Usa flexbox para alinhar logo, navegação centralizada e ícone de perfil. */
+            justify-content: space-between; /* Distribui o espaço entre os itens: logo, nav e perfil. */
+            align-items: center; /* Alinha itens verticalmente ao centro. */
+            width: 100%; /* Ocupa a largura total. */
+            padding: 10px 0; /* Padding superior e inferior. */
+        }
+
+        /* Seção esquerda do cabeçalho com o logo "Elite Motos". */
+        .header-left .logo {
+            display: flex; /* Permite alinhar a imagem do logo e o texto. */
+            align-items: center; /* Alinha verticalmente a imagem e o texto. */
+            font-size: 1.8em; /* Tamanho da fonte para "Elite Motos". */
+            font-weight: bold; /* Texto em negrito. */
+            color: var(--white); /* Cor do texto "Elite Motos" branca. */
+        }
+
+        .header-left .logo-img {
+            height: 30px; /* Altura da imagem do logo. */
+            margin-right: 10px; /* Espaçamento à direita da imagem do logo. */
+        }
+
+        /* Contêiner centralizado para os links de navegação Home e Login. */
+        .nav-center {
+            display: flex;
+            gap: 30px; /* Aumentado o espaçamento entre Home e Login para simular centralização visual. */
+            margin-left: auto; /* Empurra para a direita o máximo possível. */
+            margin-right: auto; /* Empurra para a esquerda o máximo possível, resultando em centralização. */
+        }
+
+        .nav-link {
+            color: var(--white); /* Cor dos links "Home" e "Login" branca por padrão. */
+            text-decoration: none; /* Remove sublinhado dos links. */
+            font-size: 1.1em; /* Tamanho da fonte dos links. */
+            transition: color 0.3s ease; /* Transição suave na cor do texto. */
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--yellow-accent); /* Cor amarela ao passar o mouse ou se for o link ativo. */
+        }
+
+
+        .profile-icon {
+            font-size: 4.5em; /* Tamanho do ícone de perfil. */
+            color: var(--yellow-accent); /* Cor amarela do ícone de perfil. */
+            text-decoration: none; /* Remove sublinhado do link do ícone. */
+        }
+
+        /* Conteúdo principal da tela Home (Título "Bem Vindo(a)!" e botão "Estoque"). */
+        .home-main-content {
+            text-align: left; /* Alinha o texto à esquerda (conforme imagem). */
+            width: 100%; /* Ocupa a largura total para posicionamento à esquerda. */
+            flex-grow: 1; /* Permite que o conteúdo principal ocupe o espaço restante verticalmente. */
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Centraliza o conteúdo verticalmente na área disponível. */
+            padding-left: 0; /* Remover padding-left duplicado se já estiver no container */
+        }
+
+        .home-main-content h1 {
+            font-size: 2.5em; /* Tamanho da fonte do "Bem Vindo(a)!", conforme a imagem. */
+            margin-bottom: 20px; /* Espaçamento abaixo do título. */
+            color: var(--white); /* Cor branca do título. */
+        }
+
+        .home-main-content p {
+            font-size: 1.1em; /* Tamanho da fonte do parágrafo. */
+            line-height: 1.6; /* Espaçamento entre linhas para melhor leitura. */
+            margin-bottom: 30px; /* Espaçamento abaixo do parágrafo. */
+            color: var(--white); /* Cor branca do parágrafo. */
+            max-width: 500px; /* Largura máxima para o parágrafo. */
+        }
+
+        /* Estilo específico para o botão "Estoque" na tela Home */
+        .home-main-content .btn-primary {
+            font-size: 1.5em; /* Tamanho da fonte maior. */
+            /* REDUZINDO O PADDING HORIZONTAL PARA DEIXAR MENOS LARGO */
+            padding: 12px 50px; /* Ajuste o segundo valor (horizontal) para controlar a largura. */
+            /* Se 0px não funcionou, pode ser porque o conteúdo (texto) ainda está definindo a largura mínima.
+               Podemos tentar definir uma largura máxima ou largura fixa. */
+            max-width: 150px; /* Exemplo: limite a largura máxima do botão. */
+            /* width: 200px; /* Exemplo: defina uma largura fixa. */
+            border-radius: 5px; /* Bordas menos arredondadas. */
+        }
+
+
+        /* Rodapé da tela Home (seta de voltar). */
+        .home-footer {
+            width: 100%; /* Ocupa a largura total. */
+            display: flex; /* Usa flexbox. */
+            justify-content: flex-start; /* Alinha a seta para a esquerda. */
+            padding: 20px 0 0 0; /* Padding para posicionar a seta mais à esquerda e na parte inferior (já que o container tem padding lateral). */
+        }
+
+        .back-arrow-box {
+            background-color: var(--orange-accent); /* Fundo laranja da caixa da seta. */
+            width: 50px; /* Largura do quadrado da seta. */
+            height: 50px; /* Altura do quadrado da seta. */
+            border-radius: 10px; /* Bordas arredondadas do quadrado da seta. */
+            display: flex; /* Usa flexbox para centralizar o ícone dentro da caixa. */
+            justify-content: center; /* Centraliza horizontalmente. */
+            align-items: center; /* Centraliza verticalmente. */
+            font-size: 1.8em; /* Tamanho do ícone da seta. */
+            color: var(--white); /* Cor branca da seta. */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra sutil. */
+        }
+
+        .back-link {
+            text-decoration: none; /* Remove sublinhado do link da seta. */
+        }
+
+        .back-arrow-box:hover {
+            background-color: #ff6347; /* Cor de fundo mais escura ao passar o mouse. */
+        }
+
+
+        /*
+        **************************************
+        * RESPONSIVIDADE (MEDIA QUERIES) HOME*
+        **************************************
+        */
+
+        /* Media Query para telas médias (ex: tablets). */
+        @media (max-width: 850px) {
+            .home-container {
+                width: 95%; /* Aumenta a largura para ocupar mais espaço. */
+                border-radius: 10px; /* Bordas mais arredondadas para telas menores. */
+                min-height: auto; /* Altura flexível para se ajustar ao conteúdo. */
+                padding: 15px; /* Reduz o padding geral. */
+            }
+
+            .home-header {
+                flex-direction: column; /* Empilha os itens do cabeçalho. */
+                text-align: center; /* Centraliza o texto. */
+            }
+
+            .header-left .logo {
+                margin-bottom: 15px; /* Adiciona espaço abaixo do logo. */
+            }
+
+            .nav-center {
+                margin-top: 15px; /* Adiciona espaço acima dos links de navegação. */
+                margin-left: auto; /* Garante que permaneçam centralizados. */
+                margin-right: auto;
+                order: 1; /* Ajusta a ordem para que o nav fique abaixo do logo em telas menores. */
+            }
+
+            .profile-container {
+                margin-left: 0; /* Remove a margem auto para não interferir no alinhamento. */
+                width: 100%; /* Ocupa a largura total. */
+                text-align: right; /* Alinha o ícone de perfil à direita. */
+                margin-top: 15px; /* Adiciona espaço acima do ícone. */
+                order: 2; /* Ajusta a ordem para que o perfil fique por último. */
+            }
+
+            .nav-link {
+                margin: 0 10px; /* Ajusta as margens entre os links. */
+            }
+
+            .home-main-content {
+                text-align: center; /* Centraliza o conteúdo principal em telas menores. */
+                padding-left: 0; /* Remove o padding esquerdo. */
+            }
+
+            .home-main-content h1 {
+                font-size: 2.5em; /* Reduz o tamanho da fonte do título. */
+            }
+
+            .home-main-content p {
+                font-size: 1em; /* Reduz o tamanho da fonte do parágrafo. */
+                max-width: 90%; /* Ajusta a largura máxima. */
+                margin: 0 auto 30px auto; /* Centraliza o parágrafo. */
+            }
+
+            .home-main-content .btn-primary {
+                font-size: 1.3em; /* Ajusta o tamanho da fonte do botão. */
+                padding: 15px 35px; /* Ajusta o padding do botão. */
+            }
+        }
+
+        /* Media Query para telas pequenas (ex: celulares). */
+        @media (max-width: 480px) {
+            body {
+                padding: 5px; /* Reduz ainda mais o padding do corpo. */
+            }
+
+            .home-container {
+                padding: 10px; /* Reduz o padding do container. */
+            }
+
+            .home-main-content h1 {
+                font-size: 2em; /* Reduz ainda mais o título. */
+            }
+
+            .home-main-content p {
+                font-size: 0.9em; /* Reduz ainda mais o parágrafo. */
+                margin-bottom: 20px; /* Reduz a margem inferior. */
+            }
+
+            .home-main-content .btn-primary {
+                font-size: 1em; /* Reduz o tamanho da fonte do botão. */
+                padding: 12px 25px; /* Reduz o padding do botão. */
+            }
+
+            .back-arrow-box {
+                width: 40px; /* Reduz a largura da caixa da seta. */
+                height: 40px; /* Reduz a altura da caixa da seta. */
+                font-size: 1.1em; /* Reduz o tamanho da seta. */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="home-container">
+        <header class="home-header">
+            <div class="header-left">
+                <div class="logo">
+                    <img src="https://via.placeholder.com/40x40/FF0000/FFFFFF?text=Logo" alt=" " class="logo-img">
+                    Elite Motos
+                </div>
+            </div>
+
+            <nav class="nav-center">
+                <a href="Tela Home.html" class="nav-link active">Home</a>
+                <a href="Tela de Login.html" class="nav-link">Login</a>
+            </nav>
+
+            <div class="profile-container">
+                <a href="#" class="profile-icon"><i class="fas fa-user-circle"></i></a>
+            </div>
+        </header>
+
+        <main class="home-main-content">
+            <h1>Bem Vindo(a)!</h1>
+            <p>Seja bem-vindo(a) à Elite Motos, seu portal de gerenciamento de estoque de peças e serviços!</p>
+            <a href="Tela estoque.html" class="btn-primary">Estoque</a>
+        </main>
+
+        <footer class="home-footer">
+            <a href="#" class="back-link">
+                <div class="back-arrow-box">
+                    <i class="fas fa-arrow-left"></i>
+                </div>
+            </a>
+            </footer>
+    </div>
+</body>
+</html>

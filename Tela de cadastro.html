@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elite Motos - Cadastro</title>
+    <style>
+        /*
+        **************************************
+        * CSS GLOBAL E RESETS BÁSICOS        *
+        **************************************
+        */
+
+        /* Reset básico */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f0f0f0; /* Fundo cinza claro para a página */
+        }
+
+        /*
+        **************************************
+        * ESTILOS DO CONTAINER DE CADASTRO   *
+        **************************************
+        */
+
+        /* Container principal da tela de cadastro, com fundo vermelho */
+        .cadastro-container {
+            width: 90%; /* Largura do container: 90% da largura do pai */
+            max-width: 1000px; /* Largura máxima para a área de conteúdo */
+            background-color: #850000; /* Cor de fundo vermelha escura para todo o container */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+            border-radius: 0px; /* Arredondamento dos cantos do container (mantido como na sua última versão) */
+            overflow: hidden; /* Garante que o conteúdo não vaze */
+            display: flex; /* Transforma em container flex para dividir em dois painéis */
+            min-height: 500px; /* Altura mínima da tela de cadastro (mantido como na sua última versão) */
+            color: #fff; /* Cor do texto branco padrão para este container */
+        }
+
+        /*
+        **************************************
+        * PAINEL ESQUERDO (TEXTO E LGPD)     *
+        **************************************
+        */
+
+        /* Painel esquerdo do layout de cadastro, com o título e informações de LGPD */
+        .cadastro-left-panel {
+            flex: 1; /* Ocupa uma parte igual do espaço flexível */
+            display: flex; /* Transforma em container flex */
+            flex-direction: column; /* Organiza os itens em coluna */
+            /* AJUSTE PRINCIPAL: Remove justify-content para que o conteúdo ocupe o topo naturalmente */
+            /* justify-content: flex-start; */ /* Removido para que o padding controle melhor */
+            /* AJUSTE PARA POSICIONAR MAIS ACIMA: Reduzir o padding-top e/ou ajustar o padding geral */
+            padding: 50px; /* Mantém o padding para os lados e base */
+            padding-top: 200px; /* Ajusta o padding superior para empurrar o conteúdo mais para cima (reduzido de 60px) */
+        }
+
+        /* Estilo para o título "Criar uma conta" */
+        .cadastro-left-panel h2 {
+            font-size: 2.5em; /* Tamanho da fonte */
+            margin-bottom: 20px; /* Margem inferior */
+            position: relative; /* Define posicionamento relativo para o pseudo-elemento (underline) */
+            display: inline-block; /* Necessário para que o underline::after se ajuste ao tamanho do texto */
+        }
+
+        /* Pseudo-elemento para criar o underline branco abaixo do título "Criar uma conta" */
+        .cadastro-left-panel h2::after {
+            content: ''; /* Conteúdo vazio, necessário */
+            position: absolute; /* Posicionamento absoluto em relação ao h2 pai */
+            left: 0; /* Começa na borda esquerda do h2 */
+            bottom: -5px; /* Posição abaixo do texto do h2 */
+            width: 30%; /* Largura do underline (mantido como na sua última versão) */
+            height: 3px; /* Espessura do underline */
+            background-color: #fff; /* Cor branca do underline */
+        }
+
+        /* Estilos para a seção de informações sobre LGPD */
+        .lgpd-info {
+            font-size: 0.9em; /* Tamanho da fonte (ajustado para medium para um valor mais exato) */
+            line-height: 1.5; /* Altura da linha para melhor legibilidade */
+            margin-top: 30px; /* Margem superior para separar do título */
+        }
+
+        /* Remove o estilo de lista padrão */
+        .lgpd-info ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        /* Estilo para cada item da lista (li) na seção LGPD */
+        .lgpd-info li {
+            margin-bottom: 10px; /* Margem inferior entre os itens */
+            position: relative; /* Posicionamento relativo para o pseudo-elemento (quadrado) */
+            padding-left: 20px; /* Espaço à esquerda para o quadrado */
+        }
+
+        /* Pseudo-elemento para criar o quadrado branco ao lado do texto da LGPD */
+        .lgpd-info li::before {
+            content: ''; /* Conteúdo vazio */
+            position: absolute; /* Posicionamento absoluto em relação ao li pai */
+            left: 0; /* Alinha à esquerda do li */
+            top: 5px; /* Ajusta a posição vertical do quadrado */
+            width: 10px; /* Largura do quadrado */
+            height: 10px; /* Altura do quadrado */
+            background-color: #fff; /* Cor branca do quadrado */
+        }
+
+        /* Estilo para o link "Ver mais" dentro da seção LGPD */
+        .lgpd-info a {
+            color: #FFD700; /* Cor amarela para o link */
+            text-decoration: none; /* Remove sublinhado */
+            font-weight: bold; /* Negrito */
+        }
+
+        /* Estilo do link "Ver mais" ao passar o mouse */
+        .lgpd-info a:hover {
+            text-decoration: underline; /* Adiciona sublinhado ao passar o mouse */
+        }
+
+        /*
+        *************************************
+        * PAINEL DIREITO (FORMULÁRIO DE CADASTRO) *
+        *************************************
+        */
+
+        /* Painel direito do layout de cadastro, com o formulário */
+        .cadastro-right-panel {
+            flex: 1.3; /* Ocupa uma parte maior do espaço flexível (mantido) */
+            background-color: rgba(255, 255, 255, 0.301); /* Fundo branco levemente transparente (mantido) */
+            border-radius: 80px; /* Arredondamento dos cantos do painel (mantido) */
+            margin: 30px; /* Margem externa (mantido) */
+            display: flex; /* Transforma em container flex */
+            flex-direction: column; /* Organiza os itens em coluna */
+            justify-content: center; /* Centraliza os itens verticalmente */
+            align-items: center; /* Centraliza os itens horizontalmente */
+            padding: 40px; /* Preenchimento interno (mantido) */
+        }
+
+        /* Estilo para o título "Cadastre-se" no painel direito */
+        .cadastro-right-panel h2 {
+            font-size: 2.2em; /* Tamanho da fonte */
+            margin-bottom: 30px; /* Margem inferior */
+            color: #fff; /* Cor do texto branco */
+        }
+
+        /* Estilo para o formulário de cadastro */
+        .cadastro-form {
+            width: 90%; /* Ocupa 90% da largura disponível no painel */
+            max-width: 320px; /* Largura máxima do formulário */
+            display: flex; /* Transforma em container flex */
+            flex-direction: column; /* Organiza os itens em coluna */
+            gap: 15px; /* Espaço entre os grupos de input */
+        }
+
+        /* Estilo para cada grupo de input (label + input) no formulário de cadastro */
+        .cadastro-form .input-group {
+            display: flex; /* Transforma em container flex */
+            flex-direction: column; /* Organiza label e input em coluna */
+        }
+
+        /* Estilo para as labels dos inputs do formulário de cadastro */
+        .cadastro-form label {
+            margin-bottom: 8px; /* Margem abaixo da label */
+            font-size: 1em; /* Tamanho da fonte */
+            font-weight: bold; /* Negrito */
+            color: #fff; /* Cor da label branca */
+        }
+
+        /* Estilo para os campos de input de texto, email e senha no formulário de cadastro */
+        .cadastro-form input[type="text"],
+        .cadastro-form input[type="email"],
+        .cadastro-form input[type="password"] {
+            padding: 15px; /* Preenchimento interno */
+            border: none; /* Remove a borda padrão do input */
+            box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.1); /* Sombra interna para simular uma borda cinza clara, sem a "dupla borda" */
+            border-radius: 15px; /* Arredondamento dos cantos do input */
+            background-color: rgba(255, 255, 255, 0.9); /* Fundo branco transparente */
+            color: #333; /* Cor do texto digitado */
+            font-size: 1em; /* Tamanho da fonte */
+            outline: none; /* Remove a borda de foco padrão do navegador */
+        }
+
+        /* Estilo para o placeholder (texto de exemplo) dos inputs */
+        .cadastro-form input::placeholder {
+            color: #757575; /* Cor do placeholder */
+        }
+
+        /* Estilo para o botão de "Entrar" (cadastro) */
+        .btn-cadastro-submit {
+            background-color: #FF7F50; /* Cor de fundo laranja coral */
+            color: #fff; /* Cor do texto branco */
+            padding: 15px 25px; /* Preenchimento interno */
+            border: none; /* Remove borda */
+            border-radius: 15px; /* Arredondamento dos cantos */
+            font-size: 1.2em; /* Tamanho da fonte */
+            font-weight: bold; /* Negrito */
+            cursor: pointer; /* Muda o cursor para "mãozinha" */
+            margin-top: 20px; /* Margem superior para separar do último input */
+            transition: background-color 0.3s ease; /* Transição suave de cor de fundo */
+        }
+
+        /* Estilo do botão de "Entrar" ao passar o mouse */
+        .btn-cadastro-submit:hover {
+            background-color: #ff6347; /* Laranja mais escuro no hover */
+        }
+
+        /*
+        **************************************
+        * RESPONSIVIDADE (MEDIA QUERIES)     *
+        **************************************
+        */
+
+        /* Media Query para telas médias (ex: tablets) */
+        @media (max-width: 850px) {
+            .cadastro-container {
+                flex-direction: column; /* Altera a direção para coluna (painel esquerdo em cima, direito embaixo) */
+                min-height: auto; /* Remove altura mínima fixa para se ajustar ao conteúdo */
+            }
+            .cadastro-left-panel, .cadastro-right-panel {
+                flex: none; /* Remove o comportamento flex para ocupar toda a largura */
+                width: 100%; /* Ocupa 100% da largura */
+                padding: 30px 20px; /* Ajusta o preenchimento */
+            }
+            .cadastro-right-panel {
+                margin: 5px; /* Margem externa reduzida para telas menores */
+                border-radius: 10px; /* Arredondamento reduzido para telas menores */
+            }
+            .cadastro-left-panel h2::after {
+                width: 50%; /* Ajusta a largura do underline para telas menores */
+            }
+        }
+
+        /* Media Query para telas pequenas (ex: celulares) */
+        @media (max-width: 480px) {
+            .cadastro-left-panel h2 {
+                font-size: 2em; /* Reduz o tamanho do título "Criar uma conta" */
+            }
+            .lgpd-info {
+                font-size: 0.8em; /* Reduz o tamanho da fonte da informação LGPD */
+            }
+            .cadastro-form {
+                max-width: 90%; /* Formulário ocupa toda a largura disponível */
+            }
+            .cadastro-right-panel h2 {
+                font-size: 1.8em; /* Reduz o tamanho do título "Cadastre-se" */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="cadastro-container">
+        <div class="cadastro-left-panel">
+            <h2>Criar uma conta</h2>
+            <div class="lgpd-info">
+                <ul>
+                    <li>Declaro estar ciente que os dados pessoais serão utilizados no sistema de acordo com a Lei Geral de Proteção de Dados (n° 13.709/2018). <a href="#">Ver mais</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="cadastro-right-panel">
+            <h2>Cadastre-se</h2>
+            <form class="cadastro-form">
+                <div class="input-group">
+                    <label for="nome">Nome*</label>
+                    <input type="text" id="nome" name="nome" required>
+                </div>
+                <div class="input-group">
+                    <label for="email-cadastro">E-mail*</label>
+                    <input type="email" id="email-cadastro" name="email-cadastro" required>
+                </div>
+                <div class="input-group">
+                    <label for="confirm-email">Confirme seu E-mail*</label>
+                    <input type="email" id="confirm-email" name="confirm-email" required>
+                </div>
+                <div class="input-group">
+                    <label for="senha-cadastro">Senha*</label>
+                    <input type="password" id="senha-cadastro" name="senha-cadastro" required>
+                </div>
+                <div class="input-group">
+                    <label for="confirm-senha">Confirme sua Senha*</label>
+                    <input type="password" id="confirm-senha" name="confirm-senha" required>
+                </div>
+                <button type="submit" class="btn-cadastro-submit">Entrar</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
