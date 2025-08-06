@@ -1,0 +1,157 @@
+/*
+ **************************************
+ * TELA RECUPERAR SENHA (ATUALIZADA)  *
+ **************************************
+ */
+
+.recuperar-senha-container {
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
+}
+
+.recuperar-senha-left {
+    flex: 1;
+    background-color: #f5f5f5; /* Cor cinza claro como na referência */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 20px;
+}
+
+.back-arrow {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    font-size: 2.5em;
+    color: var(--dark-grey);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.back-arrow:hover {
+    color: var(--orange-accent);
+}
+
+/* O logo na referência tem o texto "Elite Motos" junto com o ícone. */
+/* Se a sua logo já tem o texto, a estrutura está correta. */
+.logo-section {
+    position: absolute;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.logo {
+    max-width: 150px;
+}
+
+.illustration-section {
+    position: relative;
+    top: -50px; /* Ajuste para o alinhamento */
+}
+
+.illustration {
+    max-width: 100%;
+    height: auto;
+}
+
+.recuperar-senha-right {
+    flex: 1;
+    background-color: var(--red-dark);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.recuperar-senha-card {
+    background-color: transparent;
+    max-width: 450px;
+    width: 100%;
+    color: var(--white);
+}
+
+.recuperar-senha-card h2 {
+    font-size: 2.5em;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.recuperar-senha-card form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.recuperar-senha-card .input-group {
+    text-align: left;
+}
+
+.recuperar-senha-card .input-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.recuperar-senha-card .input-group input {
+    width: 100%;
+    padding: 12px 15px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1em;
+    color: var(--dark-grey);
+    background-color: #f5f5f5; /* Fundo cinza claro para o input */
+}
+
+.btn-recuperar-senha {
+    background-color: #E3522C; /* Cor do botão ajustada para o laranja avermelhado da referência */
+    color: var(--white);
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.2em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+}
+
+.btn-recuperar-senha:hover {
+    background-color: #ff7d52; /* Cor mais clara no hover */
+}
+
+/* Responsividade para telas pequenas */
+@media (max-width: 850px) {
+    .recuperar-senha-container {
+        flex-direction: column;
+    }
+
+    .recuperar-senha-left {
+        padding-bottom: 0;
+        height: 250px;
+        justify-content: flex-start;
+        background-color: #f5f5f5;
+    }
+    
+    .recuperar-senha-right {
+        padding-top: 50px;
+        flex: none;
+    }
+    
+    .back-arrow {
+        top: 20px;
+        left: 20px;
+    }
+
+    .recuperar-senha-card {
+        padding: 0;
+    }
+
+    .logo-section, .illustration-section {
+        display: none;
+    }
+}

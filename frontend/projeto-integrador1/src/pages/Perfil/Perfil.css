@@ -1,0 +1,270 @@
+/*
+ **************************************
+ * TELA MEU PERFIL (VERSÃO FINAL)     *
+ **************************************
+ */
+
+/* Reseta margens e paddings padrão */
+html, body, #root {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Container principal que define o layout de toda a tela */
+.perfil-page-container {
+    display: grid;
+    grid-template-rows: 15% 85%; /* Cabeçalho 15%, conteúdo 85% */
+    min-height: 100vh;
+}
+
+/* Container do cabeçalho */
+.header-container {
+    grid-row: 1;
+    width: 100%;
+    background-color: var(--red-dark); /* Cor do cabeçalho */
+}
+
+/* Container das duas seções abaixo do cabeçalho */
+.perfil-container {
+    grid-row: 2;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+}
+
+/* Coluna Esquerda: 50% da largura, cor preta */
+.perfil-left {
+    flex: 1; /* Ocupa 50% da largura */
+    background-color: #1A1A1A;
+    color: var(--white);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 40px;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.perfil-dados {
+    text-align: left;
+    width: 100%;
+    padding-left: 10%;
+}
+
+.perfil-foto-container {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-bottom: 15px;
+    border: 3px solid var(--white);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.perfil-foto {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.upload-label {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: var(--white);
+    padding: 5px 0;
+    cursor: pointer;
+    font-size: 0.8em;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.perfil-foto-container:hover .upload-label {
+    opacity: 1;
+}
+
+.perfil-dados h2 {
+    font-size: 1.8em;
+    margin-bottom: 10px;
+}
+
+.perfil-info {
+    text-align: left;
+}
+
+.perfil-info p {
+    font-size: 1em;
+    margin: 3px 0;
+}
+
+/* Coluna Direita: 50% da largura, cor vermelha */
+.perfil-right {
+    flex: 1; /* Ocupa 50% da largura */
+    background-color: var(--red-dark);
+    color: var(--white);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 40px;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.perfil-gerenciamento {
+    width: 80%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.perfil-gerenciamento h2 {
+    font-size: 2em;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.update-field {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.update-field label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 3px;
+    font-size: 0.9em;
+}
+
+.update-field input {
+    width: 100%;
+    padding: 10px 12px;
+    border: none;
+    border-radius: 20px;
+    font-size: 0.9em;
+    background-color: var(--white);
+    color: var(--dark-grey);
+}
+
+.form-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-top: auto;
+}
+
+.btn-excluir-conta {
+    background-color: transparent;
+    color: var(--white);
+    border: none;
+    text-decoration: underline;
+    cursor: pointer;
+    font-size: 0.9em;
+    padding: 0;
+}
+
+.btn-salvar {
+    background-color: #ff7043;
+    color: var(--white);
+    padding: 10px 25px;
+    border-radius: 8px;
+    border: none;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    height: auto;
+}
+
+.btn-salvar:hover {
+    background-color: #E3522C;
+}
+
+/* Modal de exclusão */
+.delete-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.delete-modal {
+    background-color: var(--white);
+    color: var(--dark-grey);
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    max-width: 300px;
+}
+
+.modal-buttons {
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.btn-cancelar, .btn-confirmar {
+    background-color: #ccc;
+    color: var(--dark-grey);
+    padding: 8px 15px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-size: 0.9em;
+}
+
+.btn-confirmar {
+    background-color: var(--red-dark);
+    color: var(--white);
+}
+
+/* Responsividade */
+@media (max-width: 850px) {
+    .perfil-page-container {
+        grid-template-rows: auto 1fr; /* Volta para a altura automática do cabeçalho em telas menores */
+    }
+    .perfil-container {
+        flex-direction: column;
+    }
+    .perfil-left, .perfil-right {
+        flex: none;
+        height: auto;
+        padding: 20px;
+        align-items: center;
+    }
+    .perfil-dados {
+        text-align: center;
+        padding-left: 0;
+    }
+    .perfil-gerenciamento {
+        padding: 0 20px;
+    }
+    .form-footer {
+        flex-direction: column;
+    }
+    .btn-salvar {
+        position: static;
+        margin-top: 15px;
+        width: 100%;
+        box-shadow: none;
+    }
+}

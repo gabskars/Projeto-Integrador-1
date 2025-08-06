@@ -1,0 +1,61 @@
+/*
+ **************************************
+ * TELA HOME                          *
+ **************************************
+ */
+
+.home-container {
+    background-color: var(--red-dark);
+    color: var(--white);
+    width: 100%;
+    min-height: 100vh;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.home-main-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    flex-grow: 1;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+.home-main-content h1 {
+    font-size: 4em;
+    font-weight: bold;
+}
+
+.home-back-arrow {
+    position: absolute;
+    bottom: 20px;
+    left: 40px;
+    font-size: 3em;
+    color: var(--orange-accent);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.home-back-arrow:hover {
+    color: var(--yellow-accent);
+}
+
+@media (max-width: 768px) {
+    .home-main-content {
+        align-items: center;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    .home-main-content h1 {
+        font-size: 2.5em;
+        text-align: center;
+    }
+    .home-back-arrow {
+        left: 20px;
+    }
+}

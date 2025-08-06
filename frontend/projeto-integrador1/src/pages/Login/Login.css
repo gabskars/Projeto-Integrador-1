@@ -1,0 +1,180 @@
+/*
+ **************************************
+ * TELA LOGIN                         *
+ **************************************
+ */
+
+.login-container {
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
+}
+
+.login-left-panel {
+    flex: 1;
+    background-color: var(--white);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+}
+
+.login-right-panel {
+    flex: 1;
+    background-color: var(--red-dark);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 30px 60px;
+    color: var(--white);
+}
+
+.login-back-arrow {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    font-size: 2.5em;
+    color: var(--dark-grey);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.login-back-arrow:hover {
+    color: var(--yellow-accent);
+}
+
+.login-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.login-logo-image {
+    width: 350px;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.login-illustration {
+    max-width: 70%;
+    height: auto;
+    margin-top: 20px;
+}
+
+.login-right-panel h2 {
+    font-size: 3em;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.login-right-panel p {
+    font-size: 1em;
+    margin-bottom: 30px;
+}
+
+.login-right-panel p a {
+    color: var(--yellow-accent);
+    text-decoration: underline;
+    margin-left: 5px;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    position: relative;
+}
+
+.input-group label {
+    font-size: 1em;
+    font-weight: bold;
+}
+
+.input-group input {
+    padding: 12px 15px;
+    border: none;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.8);
+    color: var(--dark-grey);
+    font-size: 1em;
+    outline: none;
+}
+
+.input-group input::placeholder {
+    color: var(--medium-grey);
+}
+
+.forgot-password {
+    text-align: right;
+    margin-top: 5px;
+}
+
+.forgot-password a {
+    color: var(--white);
+    text-decoration: underline;
+    font-size: 0.9em;
+}
+
+.btn-login-submit {
+    background-color: var(--yellow-accent);
+    color: var(--dark-grey);
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.2em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 15px;
+}
+
+.btn-login-submit:hover {
+    background-color: #ffffff;
+}
+
+@media (max-width: 850px) {
+    .login-container {
+        flex-direction: column;
+    }
+    .login-left-panel, .login-right-panel {
+        width: 100%;
+        min-height: 50vh;
+    }
+    .login-left-panel {
+        order: 2;
+        padding-top: 60px;
+    }
+    .login-right-panel {
+        order: 1;
+        padding-bottom: 60px;
+    }
+    .login-back-arrow {
+        top: 20px;
+        left: 20px;
+        color: var(--dark-grey);
+    }
+}
+
+@media (max-width: 480px) {
+    .login-right-panel {
+        padding: 30px;
+    }
+    .login-right-panel h2 {
+        font-size: 2em;
+    }
+    .login-logo-image {
+        width: 120px;
+    }
+    .login-logo {
+        font-size: 1.5em;
+    }
+}

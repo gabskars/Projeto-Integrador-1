@@ -1,0 +1,199 @@
+/*
+ **************************************
+ * TELA CADASTRO                      *
+ **************************************
+ */
+
+.cadastro-page-container {
+    background-color: var(--red-dark);
+    color: var(--white);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 20px;
+}
+
+.cadastro-back-arrow {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    font-size: 2.5em;
+    color: var(--white);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.cadastro-back-arrow:hover {
+    color: var(--yellow-accent);
+}
+
+.cadastro-content-wrapper {
+    display: flex;
+    width: 100%;
+    max-width: 1000px; /* Limite do tamanho do contêiner principal */
+    background-color: var(--red-dark); /* Fundo do wrapper para a borda arredondada */
+    border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+}
+
+.cadastro-left-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 30px 60px;
+}
+
+.cadastro-left-content h2 {
+    font-size: 2.5em;
+    font-weight: bold;
+    border-bottom: 3px solid var(--white);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.privacy-box {
+    margin-top: 20px;
+}
+
+.privacy-text {
+    display: flex;
+    align-items: flex-start;
+    font-size: 0.9em;
+    line-height: 1.5;
+}
+
+.privacy-checkbox {
+    width: 15px;
+    height: 15px;
+    margin-right: 10px;
+    margin-top: 2px;
+    appearance: none;
+    -webkit-appearance: none;
+    border: 1px solid var(--white);
+    background-color: var(--white);
+    border-radius: 3px;
+    cursor: pointer;
+    position: relative;
+}
+
+.privacy-checkbox:checked {
+    background-color: var(--yellow-accent);
+    border-color: var(--yellow-accent);
+}
+
+.privacy-checkbox:checked::before {
+    content: '✓';
+    font-size: 14px;
+    color: var(--dark-grey);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.privacy-text a {
+    color: var(--yellow-accent);
+    text-decoration: underline;
+    margin-left: 5px;
+}
+
+.cadastro-form-card {
+    flex: 1;
+    background-color: rgba(255, 255, 255, 0.685); /* Fundo semi-transparente como na imagem */
+    border-radius: 20px;
+    padding: 40px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.cadastro-form-card h2 {
+    font-size: 2em;
+    font-weight: bold;
+    color: var(--dark-grey);
+    margin-bottom: 30px;
+}
+
+.cadastro-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.cadastro-input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.cadastro-input-group label {
+    font-size: 1em;
+    font-weight: bold;
+    color: var(--dark-grey);
+}
+
+.cadastro-input-group input {
+    padding: 12px 15px;
+    border: none;
+    border-radius: 10px;
+    background-color: var(--white);
+    color: var(--dark-grey);
+    font-size: 1em;
+    outline: none;
+}
+
+.cadastro-input-group input::placeholder {
+    color: var(--medium-grey);
+}
+
+.btn-cadastro-submit {
+    background-color: var(--orange-accent); 
+    color: var(--white);
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.2em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+}
+
+.btn-cadastro-submit:hover {
+    background-color: #ffb74d;
+}
+
+@media (max-width: 850px) {
+    .cadastro-page-container {
+        padding: 0;
+    }
+    .cadastro-content-wrapper {
+        flex-direction: column;
+        border-radius: 0;
+        max-width: none;
+    }
+    .cadastro-left-content, .cadastro-form-card {
+        width: 100%;
+        padding: 30px;
+    }
+    .cadastro-form-card {
+        background-color: rgba(255, 255, 255, 0.95);
+        border-radius: 0;
+    }
+    .cadastro-left-content {
+        order: 1;
+        padding-bottom: 60px;
+    }
+    .cadastro-form-card {
+        order: 2;
+        padding-top: 60px;
+    }
+    .cadastro-back-arrow {
+        color: var(--dark-grey);
+    }
+}
