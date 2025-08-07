@@ -1,12 +1,11 @@
 {
   "Version": 1,
-  "Hash": "63VhLD4p5WhLHQB5jol88utqyjiqoO70yyObImDFr0U=",
+  "Hash": "5V9iOrW1fEBlpZZ/JVJtHbp6IlOy9RnfGz/i6cj/YKw=",
   "Source": "EliteMotosProject",
   "BasePath": "_content/EliteMotosProject",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
   "DiscoveryPatterns": [],
-  "Assets": [],
-  "Endpoints": []
+  "Assets": []
 }

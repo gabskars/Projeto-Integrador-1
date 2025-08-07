@@ -1,3 +1,4 @@
+// src/componentes/Modal/ConfirmationModal.tsx
 import React from 'react';
 import './ConfirmationModal.css';
 
@@ -9,14 +10,18 @@ interface ConfirmationModalProps {
 
 const ConfirmationModal: React.FC<ConfirmationModalProps> = ({ onClose, onConfirm, message }) => {
   return (
-    <div className="modal-overlay" onClick={onClose}>
-      <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+    <div className="modal-overlay">
+      <div className="modal-content">
+        <div className="modal-header">
+          <h3>Confirmar Exclusão</h3>
+          <button onClick={onClose}>&times;</button>
+        </div>
         <p>{message}</p>
         <div className="modal-actions">
-          <button className="btn-cancel" onClick={onClose}>
+          <button onClick={onClose} className="btn-cancel">
             Cancelar
           </button>
-          <button className="btn-confirm" onClick={onConfirm}>
+          <button onClick={onConfirm} className="btn-confirm">
             Confirmar
           </button>
         </div>

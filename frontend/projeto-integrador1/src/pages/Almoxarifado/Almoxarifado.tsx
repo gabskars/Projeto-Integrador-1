@@ -16,8 +16,6 @@ const Almoxarifado: React.FC = () => {
 
   const [selectedItemId, setSelectedItemId] = useState<number | null>(null);
   const [searchTerm, setSearchTerm] = useState<string>('');
-  
-  // Novo estado para controlar o tipo de pesquisa
   const [searchType, setSearchType] = useState<'nome' | 'categoria'>('nome');
 
   const [modalState, setModalState] = useState<{
@@ -30,15 +28,64 @@ const Almoxarifado: React.FC = () => {
     selectedItem: null,
   });
 
-  // Funções para lidar com os modais e ações (mantidas como estão)
-  const handleOpenModal = (action: 'add' | 'edit' | 'delete', item: any = null) => { /* ... */ };
-  const handleCloseModal = () => { /* ... */ };
-  const handleSaveItem = (newItem: any) => { /* ... */ };
-  const handleConfirmDelete = () => { /* ... */ };
-  const handleDeleteClick = () => { /* ... */ };
-  const handleEditClick = () => { /* ... */ };
+  const handleOpenModal = (action: 'add' | 'edit' | 'delete', item: any = null) => {
+    setModalState({
+      isOpen: true,
+      action,
+      selectedItem: item,
+    });
+  };
 
-  // Lógica de filtragem aprimorada para lidar com os dois tipos de pesquisa
+  const handleCloseModal = () => {
+    setModalState({
+      isOpen: false,
+      action: null,
+      selectedItem: null,
+    });
+    setSelectedItemId(null);
+  };
+
+  const handleSaveItem = (newItem: any) => {
+    if (modalState.action === 'add') {
+      setItems(prevItems => [...prevItems, { ...newItem, id: Date.now() }]);
+      alert('Novo item adicionado com sucesso! (simulação)');
+    } else if (modalState.action === 'edit') {
+      setItems(prevItems =>
+        prevItems.map(item => (item.id === newItem.id ? newItem : item))
+      );
+      alert('Item editado com sucesso! (simulação)');
+    }
+    handleCloseModal();
+  };
+
+  const handleConfirmDelete = () => {
+    setItems(prevItems => prevItems.filter(item => item.id !== modalState.selectedItem?.id));
+    alert('Item excluído com sucesso! (simulação)');
+    handleCloseModal();
+  };
+  
+  const handleDeleteClick = () => {
+    if (selectedItemId) {
+      const itemToDelete = items.find(item => item.id === selectedItemId);
+      if (itemToDelete) {
+        handleOpenModal('delete', itemToDelete);
+      }
+    } else {
+      alert('Por favor, selecione um item para excluir.');
+    }
+  };
+
+  const handleEditClick = () => {
+    if (selectedItemId) {
+      const itemToEdit = items.find(item => item.id === selectedItemId);
+      if (itemToEdit) {
+        handleOpenModal('edit', itemToEdit);
+      }
+    } else {
+      alert('Por favor, selecione um item para editar.');
+    }
+  };
+
   const filteredItems = items.filter(item => {
     if (searchType === 'nome') {
       return item.nome.toLowerCase().includes(searchTerm.toLowerCase());
@@ -58,7 +105,6 @@ const Almoxarifado: React.FC = () => {
       </div>
 
       <div className="search-bar">
-        {/* Adicionei botões para alternar o tipo de pesquisa */}
         <div className="search-type-selector">
           <button
             className={`search-btn ${searchType === 'nome' ? 'active' : ''}`}
@@ -107,13 +153,13 @@ const Almoxarifado: React.FC = () => {
       </table>
 
       <div className="almoxarifado-footer">
-        <button className="btn-almoxarifado" onClick={handleEditClick}>
+        <button className="btn-almoxarifado" onClick={handleEditClick} disabled={!selectedItemId}>
           Editar item
         </button>
         <button className="btn-almoxarifado" onClick={() => handleOpenModal('add')}>
           Adicionar novo item
         </button>
-        <button className="btn-almoxarifado" onClick={handleDeleteClick}>
+        <button className="btn-almoxarifado" onClick={handleDeleteClick} disabled={!selectedItemId}>
           Excluir item
         </button>
       </div>

@@ -1,16 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import './AlmoxarifadoFormModal.css';
 
+interface ItemData {
+  id?: number;
+  nome: string;
+  quantidade: string;
+  categoria: string;
+  preco: string;
+}
+
 interface AlmoxarifadoFormModalProps {
   onClose: () => void;
-  onSave: (item: any) => void;
+  onSave: (item: ItemData) => void;
   title: string;
-  item?: any; // Item selecionado para edição
+  item?: ItemData | null;
 }
 
 const AlmoxarifadoFormModal: React.FC<AlmoxarifadoFormModalProps> = ({ onClose, onSave, title, item }) => {
-  const [formData, setFormData] = useState({
-    id: item?.id || null, // Adicionado o ID para edição
+  const [formData, setFormData] = useState<ItemData>({
+    id: item?.id,
     nome: item?.nome || '',
     quantidade: item?.quantidade || '',
     categoria: item?.categoria || '',
@@ -24,10 +32,10 @@ const AlmoxarifadoFormModal: React.FC<AlmoxarifadoFormModalProps> = ({ onClose, 
   }, [item]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { id, value } = e.target;
+    const { name, value } = e.target;
     setFormData((prevData) => ({
       ...prevData,
-      [id]: value,
+      [name]: value,
     }));
   };
 
@@ -39,23 +47,26 @@ const AlmoxarifadoFormModal: React.FC<AlmoxarifadoFormModalProps> = ({ onClose, 
   return (
     <div className="modal-overlay" onClick={onClose}>
       <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-        <h2>{title}</h2>
+        <div className="modal-header">
+          <h2>{title}</h2>
+          <button onClick={onClose}>&times;</button>
+        </div>
         <form onSubmit={handleSubmit}>
           <div className="input-group">
             <label htmlFor="nome">Nome do Produto</label>
-            <input type="text" id="nome" value={formData.nome} onChange={handleChange} required />
+            <input type="text" id="nome" name="nome" value={formData.nome} onChange={handleChange} required />
           </div>
           <div className="input-group">
             <label htmlFor="quantidade">Quantidade</label>
-            <input type="number" id="quantidade" value={formData.quantidade} onChange={handleChange} required />
+            <input type="text" id="quantidade" name="quantidade" value={formData.quantidade} onChange={handleChange} required />
           </div>
           <div className="input-group">
             <label htmlFor="categoria">Categoria</label>
-            <input type="text" id="categoria" value={formData.categoria} onChange={handleChange} required />
+            <input type="text" id="categoria" name="categoria" value={formData.categoria} onChange={handleChange} required />
           </div>
           <div className="input-group">
             <label htmlFor="preco">Preço Unitário</label>
-            <input type="text" id="preco" value={formData.preco} onChange={handleChange} required />
+            <input type="text" id="preco" name="preco" value={formData.preco} onChange={handleChange} required />
           </div>
           <div className="modal-actions">
             <button type="button" className="btn-cancel" onClick={onClose}>
